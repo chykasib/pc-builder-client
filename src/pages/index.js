@@ -1,7 +1,8 @@
 import Head from "next/head";
 import RootLayout from "./components/Layout/RootLayout";
-import Banner from "./components/Layout/UI/banner";
 import AllProducts from "./components/Layout/UI/AllProducts";
+import Banner from "./components/Layout/UI/Banner";
+import Features from "./components/Layout/UI/Features";
 const HomePage = ({ allProducts }) => {
   return (
     <div>
@@ -16,6 +17,7 @@ const HomePage = ({ allProducts }) => {
       </Head>
       <Banner />
       <AllProducts allProducts={allProducts} />
+      <Features allFeatures={allProducts} />
     </div>
   );
 };

@@ -5,9 +5,8 @@ import Link from "next/link";
 const { Meta } = Card;
 
 const AllProducts = ({ allProducts }) => {
-  // console.log(allProducts[4].name);
   return (
-    <>
+    <div>
       <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "40px" }}>
         Featured Products
       </h1>
@@ -107,7 +106,7 @@ const AllProducts = ({ allProducts }) => {
           </>
         ))}
       </Row>
-    </>
+    </div>
   );
 };
 

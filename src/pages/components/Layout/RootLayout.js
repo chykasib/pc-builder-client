@@ -1,11 +1,4 @@
-import {
-  UserOutlined,
-  FacebookFilled,
-  LinkedinFilled,
-  GoogleSquareFilled,
-  TwitterSquareFilled,
-  AppstoreOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, AppstoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 import styles from "@/styles/Home.module.css";
@@ -133,20 +126,6 @@ const RootLayout = ({ children }) => {
         >
           CustomTech Wizardry
         </h2>
-        <p className={styles.social_icons}>
-          <Link href="">
-            <FacebookFilled />
-          </Link>
-          <Link href="www.twitter.com">
-            <TwitterSquareFilled />
-          </Link>
-          <Link href="">
-            <GoogleSquareFilled />
-          </Link>
-          <Link href="">
-            <LinkedinFilled />
-          </Link>
-        </p>
         CustomTech Wizardry
       </Footer>
     </Layout>
