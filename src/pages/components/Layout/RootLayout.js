@@ -56,6 +56,7 @@ const RootLayout = ({ children }) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
+          color: "black",
         }}
       >
         <div className="brand-logo">
@@ -81,6 +82,7 @@ const RootLayout = ({ children }) => {
             <items
               style={{
                 margin: "0px 25px",
+                color: "white",
               }}
             >
               <UserOutlined />
@@ -94,9 +96,16 @@ const RootLayout = ({ children }) => {
             placement="bottom"
             arrow
           >
-            <Link href="/contact">
-              <AppstoreOutlined />
-              Categories
+            <Link href="/Categories">
+              <items
+                style={{
+                  margin: "0px 25px",
+                  color: "white",
+                }}
+              >
+                <AppstoreOutlined />
+                Categories
+              </items>
             </Link>
           </Dropdown>
         </Menu>
@@ -122,23 +131,23 @@ const RootLayout = ({ children }) => {
             fontSize: "28px",
           }}
         >
-          PH-NEWS PORTAL
+          CustomTech Wizardry
         </h2>
         <p className={styles.social_icons}>
-          <Link href="https://web.facebook.com/groups/programmingherocommunity">
+          <Link href="">
             <FacebookFilled />
           </Link>
           <Link href="www.twitter.com">
             <TwitterSquareFilled />
           </Link>
-          <Link href="https://web.programming-hero.com/home/">
+          <Link href="">
             <GoogleSquareFilled />
           </Link>
-          <Link href="www.linkedin.com">
+          <Link href="">
             <LinkedinFilled />
           </Link>
         </p>
-        News Portal ©2023 Created by Programming Hero
+        CustomTech Wizardry
       </Footer>
     </Layout>
   );
