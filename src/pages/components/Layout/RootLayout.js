@@ -101,7 +101,7 @@ const RootLayout = ({ children }) => {
             placement="bottom"
             arrow
           >
-            <Link href="/Categories">
+            <Link href="">
               <items
                 style={{
                   margin: "0px 25px",

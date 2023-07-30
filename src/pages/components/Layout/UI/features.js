@@ -31,6 +31,7 @@ const Features = ({ allFeatures }) => {
             >
               <Link href={`categories/${feature?.id}`}>
                 <Card
+                  responsive
                   cover={
                     // eslint-disable-next-line @next/next/no-img-element
                     <img alt="" src={feature?.logo} height={80} width={80} />

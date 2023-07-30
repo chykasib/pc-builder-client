@@ -6,11 +6,11 @@ import Features from "./components/Layout/UI/Features";
 const HomePage = ({ allProducts }) => {
   return (
     <div>
-      <Head>
+      <Head responsive>
         <title>CustomTech Wizardry</title>
         <meta
           name="description"
-          content="This is news portal of programming hero made by next-js"
+          content="This is CustomTech Wizardry made by next-js"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -28,12 +28,12 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
-  const data = await rest.json();
+  const res = await fetch("https://pc-builder-server-psi.vercel.app/products");
+  const data = await res.json();
   return {
     props: {
       allProducts: data.data,
     },
-    // revalidate: 10,
+    revalidate: 10,
   };
 };

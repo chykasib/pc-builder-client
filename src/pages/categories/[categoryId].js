@@ -6,33 +6,22 @@ import RootLayout from "../components/Layout/RootLayout";
 const { Meta } = Card;
 
 const CategoriesPage = ({ categories }) => {
+  console.log(categories);
   return (
-    <div>
-      <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "40px" }}>
-        Featured Products
-      </h1>
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: "15px",
-          marginBottom: "40px",
-          marginTop: "10px",
-        }}
-      >
-        Check & Get Your Desired Product!
-      </p>
+    <div style={{ marginTop: 60 }}>
       <Row>
-        {categories?.map((product) => (
+        {categories?.products.map((product) => (
           <>
             <Col span={6}>
               <Card
                 style={{
                   width: 300,
                   marginBottom: 30,
+                  marginLeft: 70,
                 }}
                 cover={
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img height={200} alt="" src={product?.products[0]?.Image} />
+                  <img height={200} alt="" src={product?.Image} />
                 }
               >
                 <div
@@ -44,7 +33,7 @@ const CategoriesPage = ({ categories }) => {
                     width: "95%",
                   }}
                 ></div>
-                <Meta title={product?.products[0]?.ProductName} />
+                <Meta title={product?.ProductName} />
                 <p
                   style={{
                     textAlign: "left",
@@ -53,7 +42,7 @@ const CategoriesPage = ({ categories }) => {
                     fontWeight: "200",
                   }}
                 >
-                  Brand : <b>{product?.products[0]?.Category}</b>
+                  Brand : <b>{product?.Category}</b>
                 </p>
                 <p
                   style={{
@@ -63,7 +52,7 @@ const CategoriesPage = ({ categories }) => {
                     fontWeight: "200",
                   }}
                 >
-                  Price : <b>{product?.products[0]?.Price}</b>
+                  Price : <b>{product?.Price}</b>
                 </p>
                 <p
                   style={{
@@ -73,7 +62,7 @@ const CategoriesPage = ({ categories }) => {
                     fontWeight: "200",
                   }}
                 >
-                  Status : <b>{product?.products[0]?.Status}</b>
+                  Status : <b>{product?.Status}</b>
                 </p>
                 <p
                   style={{
@@ -83,17 +72,18 @@ const CategoriesPage = ({ categories }) => {
                     fontWeight: "200",
                   }}
                 >
-                  Rating : <b>{product?.products[0]?.IndividualRating}</b>
+                  Rating : <b>{product?.IndividualRating}</b>
                 </p>
-                <Link href={`product/${product?.products?.id}`}>
+                <Link href={`products/${product?.id}`}>
                   <p
                     style={{
                       textAlign: "center",
-                      fontSize: "20px",
+                      fontSize: "15px",
                       margin: "20px 0px",
                       backgroundColor: "black",
                       color: "white",
                       width: "168px",
+                      borderRadius: "5px",
                       padding: "2px 5px ",
                       fontWeight: "300",
                       letterSpacing: "3px",
@@ -122,7 +112,7 @@ export const getStaticPaths = async () => {
   const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
   const categoryProducts = await rest.json();
   console.log(categoryProducts);
-  const paths = categoryProducts.map((categoryProduct) => ({
+  const paths = categoryProducts?.data?.map((categoryProduct) => ({
     params: { categoryId: categoryProduct.id },
   }));
   return { paths, fallback: false };
@@ -130,10 +120,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  const rest = await fetch(
+  const res = await fetch(
     `https://pc-builder-server-psi.vercel.app/products/${params.categoryId}`
   );
-  const data = await rest.json();
+  const data = await res.json();
   return {
     props: {
       categories: data,

@@ -25,6 +25,7 @@ const AllProducts = ({ allProducts }) => {
           <>
             <Col span={6}>
               <Card
+                responsive
                 style={{
                   width: 300,
                   marginBottom: 30,
@@ -84,7 +85,7 @@ const AllProducts = ({ allProducts }) => {
                 >
                   Rating : <b>{product?.products[0]?.IndividualRating}</b>
                 </p>
-                <Link href={`product/${product?.id}`}>
+                <Link href={`products/${product?.products[0]?.id}`}>
                   <p
                     style={{
                       textAlign: "center",
