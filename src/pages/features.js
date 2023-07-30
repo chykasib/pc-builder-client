@@ -11,7 +11,7 @@ const FeaturePage = ({ allFeatures }) => {
 
 export default FeaturePage;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
   const data = await rest.json();
   return {

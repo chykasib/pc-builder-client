@@ -9,36 +9,48 @@ const RootLayout = ({ children }) => {
     {
       key: "1",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
+        <a target="_blank" rel="noopener noreferrer" href="cpu">
+          CPU
         </a>
       ),
     },
     {
       key: "2",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
+        <a target="_blank" rel="noopener noreferrer" href="motherboard">
+          Motherboard
         </a>
       ),
     },
     {
       key: "3",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item
+        <a target="_blank" rel="noopener noreferrer" href="ram">
+          RAM
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="psu">
+          Power Supply Unit
+        </a>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="storage">
+          Storage Device
+        </a>
+      ),
+    },
+    {
+      key: "6",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="monitor">
+          Monitor
         </a>
       ),
     },
@@ -116,19 +128,35 @@ const RootLayout = ({ children }) => {
       <Footer
         style={{
           textAlign: "center",
+          marginTop: "300px",
+          paddingTop: "50px",
+          backgroundColor: "black",
         }}
       >
         <div className={styles.line}></div>
         <h2
           style={{
-            fontSize: "28px",
+            fontSize: "30px",
+            color: "white",
           }}
         >
           CustomTech Wizardry
         </h2>
-        CustomTech Wizardry
+        <p style={{ color: "white", paddingTop: "5px" }}>
+          © 2023 CustomTech Wizardry | All rights reserved
+        </p>
       </Footer>
     </Layout>
   );
 };
 export default RootLayout;
+
+export const getStaticProps = async () => {
+  const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
+  const data = await rest.json();
+  return {
+    props: {
+      allCategories: data.data,
+    },
+  };
+};

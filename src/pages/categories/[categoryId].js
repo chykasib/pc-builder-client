@@ -2,9 +2,10 @@ import { Col, Row, Card } from "antd";
 import React from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import RootLayout from "../components/Layout/RootLayout";
 const { Meta } = Card;
 
-const AllProducts = ({ allProducts }) => {
+const CategoriesPage = ({ categories }) => {
   return (
     <div>
       <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "40px" }}>
@@ -21,7 +22,7 @@ const AllProducts = ({ allProducts }) => {
         Check & Get Your Desired Product!
       </p>
       <Row>
-        {allProducts?.map((product) => (
+        {categories?.map((product) => (
           <>
             <Col span={6}>
               <Card
@@ -84,7 +85,7 @@ const AllProducts = ({ allProducts }) => {
                 >
                   Rating : <b>{product?.products[0]?.IndividualRating}</b>
                 </p>
-                <Link href={`product/${product?.id}`}>
+                <Link href={`product/${product?.products?.id}`}>
                   <p
                     style={{
                       textAlign: "center",
@@ -110,4 +111,32 @@ const AllProducts = ({ allProducts }) => {
   );
 };
 
-export default AllProducts;
+export default CategoriesPage;
+
+CategoriesPage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
+
+// eslint-disable-next-line @next/next/no-typos
+export const getStaticPaths = async () => {
+  const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
+  const categoryProducts = await rest.json();
+  console.log(categoryProducts);
+  const paths = categoryProducts.map((categoryProduct) => ({
+    params: { categoryId: categoryProduct.id },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  const rest = await fetch(
+    `https://pc-builder-server-psi.vercel.app/products/${params.categoryId}`
+  );
+  const data = await rest.json();
+  return {
+    props: {
+      categories: data,
+    },
+  };
+};

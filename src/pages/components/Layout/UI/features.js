@@ -29,7 +29,7 @@ const Features = ({ allFeatures }) => {
                 borderRadius: "10px",
               }}
             >
-              <Link href={`feature/${feature?.products?.id}`}>
+              <Link href={`categories/${feature?.id}`}>
                 <Card
                   cover={
                     // eslint-disable-next-line @next/next/no-img-element
