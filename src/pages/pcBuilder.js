@@ -1,36 +1,39 @@
 import React from "react";
 import RootLayout from "./components/Layout/RootLayout";
-import { Table } from "antd";
+import { Button, Card } from "antd";
+import Link from "next/link";
 const PcBuilderPage = ({ categories }) => {
   console.log(categories);
-  const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-    },
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-    },
-    {
-      title: "Occupation",
-      dataIndex: "occupation",
-      key: "occupation",
-    },
-  ];
-
   return (
-    <div>
-      {/* <h1 className="text-2xl font-bold underline">{categories[0].name}</h1>
-      <button className="btn btn-secondary">Secondary</button> */}
-      <Table dataSource={categories} columns={columns} />
+    <div style={{ margin: "50px" }}>
+      <h1 style={{ textAlign: "center", margin: "5px" }}>
+        PC Builder - Build Your Own Computer - CustomTech Wizardry
+      </h1>
+      <Card style={{ margin: "50px" }}>
+        {categories?.map((category) => (
+          <div
+            key={category.id} // Don't forget to include a unique key for each element in the array.
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              justifyItems: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "20px",
+                margin: "10px 0px",
+                fontWeight: "300",
+              }}
+            >
+              {category.name}
+            </p>
+            <Link href={`categories/${category?.id}`}>
+              <Button style={{ justifyContent: "flex-end" }}>Choose</Button>
+            </Link>
+          </div>
+        ))}
+      </Card>
     </div>
   );
 };

@@ -6,7 +6,6 @@ import RootLayout from "../components/Layout/RootLayout";
 const { Meta } = Card;
 
 const CategoriesPage = ({ categories }) => {
-  console.log(categories);
   return (
     <div style={{ marginTop: 60 }}>
       <Row>
@@ -111,7 +110,6 @@ CategoriesPage.getLayout = function getLayout(page) {
 export const getStaticPaths = async () => {
   const rest = await fetch("https://pc-builder-server-psi.vercel.app/products");
   const categoryProducts = await rest.json();
-  console.log(categoryProducts);
   const paths = categoryProducts?.data?.map((categoryProduct) => ({
     params: { categoryId: categoryProduct.id },
   }));

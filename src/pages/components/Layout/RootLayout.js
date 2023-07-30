@@ -7,52 +7,22 @@ import Link from "next/link";
 const RootLayout = ({ children }) => {
   const items = [
     {
-      key: "1",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="cpu">
-          CPU
-        </a>
-      ),
+      label: <Link href="categories/1">CPU</Link>,
     },
     {
-      key: "2",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="motherboard">
-          Motherboard
-        </a>
-      ),
+      label: <Link href="categories/2">Motherboard</Link>,
     },
     {
-      key: "3",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="ram">
-          RAM
-        </a>
-      ),
+      label: <Link href="categories/3">RAM</Link>,
     },
     {
-      key: "4",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="psu">
-          Power Supply Unit
-        </a>
-      ),
+      label: <Link href="categories/4">Power Supply Unit</Link>,
     },
     {
-      key: "5",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="storage">
-          Storage Device
-        </a>
-      ),
+      label: <Link href="categories/5">Storage Device</Link>,
     },
     {
-      key: "6",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="monitor">
-          Monitor
-        </a>
-      ),
+      label: <Link href="categories/6">Monitor</Link>,
     },
   ];
   return (

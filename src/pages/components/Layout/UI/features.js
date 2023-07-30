@@ -22,6 +22,7 @@ const Features = ({ allFeatures }) => {
         {allFeatures?.map((feature) => (
           <>
             <Col
+              key={feature.id}
               span={4}
               style={{
                 margin: "15px",

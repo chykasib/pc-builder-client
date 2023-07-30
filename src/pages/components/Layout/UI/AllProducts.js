@@ -23,7 +23,7 @@ const AllProducts = ({ allProducts }) => {
       <Row>
         {allProducts?.map((product) => (
           <>
-            <Col span={6}>
+            <Col span={6} key={product.id}>
               <Card
                 responsive
                 style={{
@@ -89,11 +89,12 @@ const AllProducts = ({ allProducts }) => {
                   <p
                     style={{
                       textAlign: "center",
-                      fontSize: "20px",
+                      fontSize: "15px",
                       margin: "20px 0px",
                       backgroundColor: "black",
                       color: "white",
                       width: "168px",
+                      borderRadius: "5px",
                       padding: "2px 5px ",
                       fontWeight: "300",
                       letterSpacing: "3px",
