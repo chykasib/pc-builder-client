@@ -9,22 +9,22 @@ const RootLayout = ({ children }) => {
   const { data: session } = useSession();
   const items = [
     {
-      label: <Link href="categories/1">CPU</Link>,
+      label: <Link href="/categories/1">CPU</Link>,
     },
     {
-      label: <Link href="categories/2">Motherboard</Link>,
+      label: <Link href="/categories/2">Motherboard</Link>,
     },
     {
-      label: <Link href="categories/3">RAM</Link>,
+      label: <Link href="/categories/3">RAM</Link>,
     },
     {
-      label: <Link href="categories/4">Power Supply Unit</Link>,
+      label: <Link href="/categories/4">Power Supply Unit</Link>,
     },
     {
-      label: <Link href="categories/5">Storage Device</Link>,
+      label: <Link href="/categories/5">Storage Device</Link>,
     },
     {
-      label: <Link href="categories/6">Monitor</Link>,
+      label: <Link href="/categories/6">Monitor</Link>,
     },
   ];
   return (
@@ -52,13 +52,15 @@ const RootLayout = ({ children }) => {
           </h1>
         </div>
         <Menu theme="dark" mode="vertical" className={styles.menu_items}>
+          <items>
+            <Link href="/pcBuilder">
+              <Button style={{ marginRight: "10px" }} type="primary">
+                PC Builder
+              </Button>
+            </Link>
+          </items>
           {session?.user?.email ? (
             <>
-              <Link href="/pcBuilder">
-                <Button style={{ marginRight: "10px" }} type="primary">
-                  PC Builder
-                </Button>
-              </Link>
               <items>
                 <Button
                   style={{ backgroundColor: "yellow" }}
@@ -83,7 +85,7 @@ const RootLayout = ({ children }) => {
             placement="bottom"
             arrow
           >
-            <Link href="">
+            <Link href="/">
               <items
                 style={{
                   margin: "0px 25px",

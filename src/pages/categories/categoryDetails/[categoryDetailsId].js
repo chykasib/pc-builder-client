@@ -88,7 +88,6 @@ categoryDetails.getLayout = function getLayout(page) {
 export const getStaticPaths = async () => {
   const res = await fetch(`https://pc-builder-server-psi.vercel.app/products`);
   const categoryDetails = await res.json();
-  console.log(categoryDetails);
   const paths = categoryDetails?.data?.map((categoryDetail) => ({
     params: { categoryDetailsId: categoryDetail.id },
   }));

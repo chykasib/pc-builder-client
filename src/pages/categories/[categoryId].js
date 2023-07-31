@@ -5,7 +5,6 @@ import Link from "next/link";
 import RootLayout from "../components/Layout/RootLayout";
 import { useDispatch } from "react-redux";
 const { Meta } = Card;
-
 const CategoriesPage = ({ categories }) => {
   console.log(categories);
   const dispatch = useDispatch();

@@ -5,6 +5,7 @@ import Link from "next/link";
 const { Meta } = Card;
 
 const AllProducts = ({ allProducts }) => {
+  console.log(allProducts);
   return (
     <div>
       <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "40px" }}>
@@ -85,7 +86,9 @@ const AllProducts = ({ allProducts }) => {
                 >
                   Rating : <b>{product?.products[0]?.IndividualRating}</b>
                 </p>
-                <Link href={`products/${product?.products[0]?.id}`}>
+                <Link
+                  href={`products/${product?.products[0]?.id}?category=${product?.name}`}
+                >
                   <p
                     style={{
                       textAlign: "center",
