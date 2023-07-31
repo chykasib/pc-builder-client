@@ -1,4 +1,4 @@
-import { UserOutlined, AppstoreOutlined } from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 import styles from "@/styles/Home.module.css";
@@ -52,15 +52,18 @@ const RootLayout = ({ children }) => {
           </h1>
         </div>
         <Menu theme="dark" mode="vertical" className={styles.menu_items}>
-          <Link href="/pcBuilder">
-            <Button style={{ marginRight: "10px" }} type="primary">
-              PC Builder
-            </Button>
-          </Link>
           {session?.user?.email ? (
             <>
+              <Link href="/pcBuilder">
+                <Button style={{ marginRight: "10px" }} type="primary">
+                  PC Builder
+                </Button>
+              </Link>
               <items>
-                <Button type="primary" danger onClick={() => signOut()}>
+                <Button
+                  style={{ backgroundColor: "yellow" }}
+                  onClick={() => signOut()}
+                >
                   Logout
                 </Button>
               </items>
@@ -70,7 +73,7 @@ const RootLayout = ({ children }) => {
               style={{ textDecoration: "none", color: "white" }}
               href="/login"
             >
-              <items>Login</items>
+              <Button style={{ backgroundColor: "yellow" }}>Login</Button>
             </Link>
           )}
           <Dropdown

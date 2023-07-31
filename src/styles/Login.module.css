@@ -1,6 +1,6 @@
 .form {
   width: 30%;
-  height: 350px;
+  height: 40%px;
   border-radius: 10px;
   background: #090928;
   margin: 8% auto;
@@ -26,7 +26,7 @@
 }
 
 .social_icons {
-  width: 30%;
+  width: 50%;
   font-size: 40px;
   margin: 20px auto;
   justify-content: space-between;

@@ -2,17 +2,8 @@ import { GoogleOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import styles from "@/styles/Login.module.css";
 import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
 import RootLayout from "./components/Layout/RootLayout";
 const LoginPage = () => {
-  //   const [createUserWithEmailAndPassword, user, loading, error] =
-  //     useCreateUserWithEmailAndPassword(auth);
-  //   console.log(user);
-
-  const { register, handleSubmit } = useForm();
-  //   const onSubmit = (data) => {
-  //     createUserWithEmailAndPassword(data.email, data.password);
-  //   };
   return (
     <div>
       <Head>
@@ -24,22 +15,11 @@ const LoginPage = () => {
           <GoogleOutlined
             onClick={() =>
               signIn("google", {
-                callbackUrl: "https://customtech-wizardry.vercel.app/",
+                callbackUrl: "http://localhost:3000/",
               })
             }
           />
         </div>
-        <hr />
-        <form>
-          <label htmlFor="">Your Email</label>
-          <input {...register("email", { required: true })} type="email" />
-          <label htmlFor="">Your Password</label>
-          <input
-            {...register("password", { required: true })}
-            type="password"
-          />
-          <button type="submit">Login</button>
-        </form>
       </div>
     </div>
   );
