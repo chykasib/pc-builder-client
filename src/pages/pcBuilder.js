@@ -2,8 +2,11 @@ import React from "react";
 import RootLayout from "./components/Layout/RootLayout";
 import { Button, Card, Image } from "antd";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 const PcBuilderPage = ({ categories }) => {
   console.log(categories);
+  const selectedComponents = useSelector((state) => state.selectedComponents);
+  const isComplete = selectedComponents.length >= 5;
   return (
     <div
       style={{
@@ -38,6 +41,7 @@ const PcBuilderPage = ({ categories }) => {
               display: "flex",
               justifyContent: "space-between",
               justifyItems: "center",
+              paddingTop: "5px",
             }}
           >
             <p
@@ -50,11 +54,46 @@ const PcBuilderPage = ({ categories }) => {
               {category.name}
             </p>
             <Link href={`categories/${category?.id}`}>
-              <Button style={{ justifyContent: "flex-end" }}>Choose</Button>
+              <Button
+                style={{
+                  justifyContent: "flex-end",
+                  backgroundColor: "green",
+                  color: "white",
+                }}
+              >
+                Choose
+              </Button>
             </Link>
           </div>
         ))}
+
+        <Button
+          style={{
+            marginTop: "5px",
+            backgroundColor: "yellow",
+            fontWeight: "lighter",
+          }}
+        >
+          Complete Build
+        </Button>
       </Card>
+      <div>
+        {selectedComponents.map((component) => (
+          <div key={component.id}>
+            <img src={component.image} alt={component.name} />
+            <h2>{component.name}</h2>
+            <p>Category: {component.category}</p>
+            <p>Price: ${component.price}</p>
+            <p>Status: {component.status}</p>
+            <p>Rating: {component.rating}</p>
+            {isComplete ? (
+              <Button>Complete Build</Button>
+            ) : (
+              <p>Add at least 5 components</p>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

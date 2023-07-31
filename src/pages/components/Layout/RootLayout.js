@@ -3,8 +3,10 @@ import { Button, Dropdown, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const RootLayout = ({ children }) => {
+  const { data: session } = useSession();
   const items = [
     {
       label: <Link href="categories/1">CPU</Link>,
@@ -39,10 +41,10 @@ const RootLayout = ({ children }) => {
             <Link
               href="/"
               style={{
-                color: "white",
-                backgroundColor: "#404040",
+                color: "black",
+                backgroundColor: "orange",
                 padding: "5px 10px",
-                borderRadius: "3px",
+                borderRadius: "4px",
               }}
             >
               CustomTech Wizardry
@@ -51,19 +53,26 @@ const RootLayout = ({ children }) => {
         </div>
         <Menu theme="dark" mode="vertical" className={styles.menu_items}>
           <Link href="/pcBuilder">
-            <Button type="primary">PC Builder</Button>
+            <Button style={{ marginRight: "10px" }} type="primary">
+              PC Builder
+            </Button>
           </Link>
-          <Link href="/about">
-            <items
-              style={{
-                margin: "0px 25px",
-                color: "white",
-              }}
+          {session?.user?.email ? (
+            <>
+              <items>
+                <Button type="primary" danger onClick={() => signOut()}>
+                  Logout
+                </Button>
+              </items>
+            </>
+          ) : (
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              href="/login"
             >
-              <UserOutlined />
-              Login
-            </items>
-          </Link>
+              <items>Login</items>
+            </Link>
+          )}
           <Dropdown
             menu={{
               items,

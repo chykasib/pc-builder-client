@@ -1,11 +1,19 @@
-import { Col, Row, Card } from "antd";
+import { Col, Row, Card, Button } from "antd";
 import React from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import RootLayout from "../components/Layout/RootLayout";
+import { useDispatch } from "react-redux";
 const { Meta } = Card;
 
 const CategoriesPage = ({ categories }) => {
+  console.log(categories);
+  const dispatch = useDispatch();
+
+  const handleAddToBuilder = (id) => {
+    dispatch(addToBuilder(id));
+    // You can also add a notification or message here to inform the user about the successful addition.
+  };
   return (
     <div style={{ marginTop: 60 }}>
       <Row>
@@ -73,7 +81,7 @@ const CategoriesPage = ({ categories }) => {
                 >
                   Rating : <b>{product?.IndividualRating}</b>
                 </p>
-                <Link href={`products/${product?.id}`}>
+                <Link href={`categoryDetails/${product?.id}`}>
                   <p
                     style={{
                       textAlign: "center",
@@ -91,6 +99,9 @@ const CategoriesPage = ({ categories }) => {
                     Read More <ArrowRightOutlined />
                   </p>
                 </Link>
+                <Button onClick={() => handleAddToBuilder(() => product?.id)}>
+                  Add to Builder
+                </Button>
               </Card>
             </Col>
           </>
